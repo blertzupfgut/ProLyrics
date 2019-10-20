@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<title>Live Lyrics</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="themes/global/prolyrics.css">
+<link rel="stylesheet" href="css/theme/night.css" id="theme">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section data-state="fingerhut">
+We come to You with a heart of thanks, <br>
+for your love <br>
+To be a living sacrifice,  <br>
+brought with love <br>
+We come to You with a heart of thanks, <br>
+for Your love <br>
+An offering of all we are, <br>
+brought with love <br>
+</section>
+
+<section data-state="fingerhut">
+All creation, looks to You <br>
+All provision, comes from You <br>
+In every sunrise, hope shines through <br>
+For Your mercy, we thank You <br>
+</section>
+
+<section data-state="darkside">
+All creation, looks to You <br>
+All provision, comes from You <br>
+In every sunrise, hope shines through <br>
+For Your mercy, we thank You <br>
+</section>
+
+</div>
+</div>
+
+<script src="js/reveal.js"></script>
+<script src="themes/global/prolyrics.js"></script>
+<script>
+Reveal.addEventListener('fingerhut', function() {
+    document.getElementById('theme').setAttribute('href','themes/Fingerhut/style.css');
+}, false);
+Reveal.addEventListener('darkside', function() {
+    document.getElementById('theme').setAttribute('href','css/theme/night.css');
+}, false);
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+.reveal {
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.reveal .slides {
+	margin: 0;
+}
+
+.reveal .slides > section,
+.reveal .slides > section > section {
+	/* GEHT NICHT MIT MEHREREN FOLIEN position: static !important; */
+	/* width: auto !important; */
+	width: 95% !important;
+	margin: 2vh;
+    padding: 0;
+	/* border: 5px solid red; */
+}

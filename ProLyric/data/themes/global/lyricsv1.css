@@ -1,0 +1,34 @@
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+html {
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  height: calc( var(--vh, 1vh) * 100);
+  overflow: hidden; }
+
+body {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  line-height: 1;
+  margin: 0;
+  background-color: #fff;
+  color: #000;
+}
+  
+/* .reveal .slides { */
+	/* // margin: 0 20px 0 20px; */
+	/* margin: 10px; */
+	/* border: 1px solid red; */
+	/* text-align: left; */
+	/* // color: white; */
+	/* // font-size: 3vw; */
+	/* font-size: 24px; */
+/* } */
+
+/* .reveal .slides > section, */
+/* .reveal .slides > section > section { */
+	/* padding: 0; */
+/* } */

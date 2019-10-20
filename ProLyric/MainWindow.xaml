@@ -1,0 +1,283 @@
+﻿<reactiveui:ReactiveWindow 
+    x:Class="ProLyric.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:ProLyric"
+    xmlns:reactiveui="http://reactiveui.net"    
+    mc:Ignorable="d"
+    x:TypeArguments="local:AppVM"
+    Title="ProLyrics" Height="960" Width="1200" x:Name="mainWindow">
+    <!--<Window.Resources>
+        <Style TargetType="{x:Type iconPacks:PackIconMaterial}">
+            <Setter Property="Foreground" Value="DarkBlue"/>
+        </Style>
+    </Window.Resources>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>        
+        <Menu>
+            <MenuItem Header="Datei">
+                <MenuItem Header="Neuer Ablauf"/>
+                <MenuItem Header="Ablauf öffnen ..."/>
+                <Separator/>
+                <MenuItem Header="Ablauf speichern"/>
+                <MenuItem Header="Ablauf speichern unter ..."/>
+                <Separator/>
+                <MenuItem Header="Beenden"/>
+            </MenuItem>
+            <!--<MenuItem Header="Ansicht">
+                <MenuItem Header="Testoption" IsChecked="{Binding FileStats.IsVisible, Mode=TwoWay}" IsCheckable="True"/>
+            </MenuItem>-->
+            <MenuItem Header="Fenster">
+                <MenuItem Header="Fensteranordnung öffnen ..."/>
+                <MenuItem Header="Fensteranordnung speichern unter ..."/>
+            </MenuItem>
+        </Menu>
+        <avalonDock:DockingManager x:Name="dockManager" Grid.Row="1">
+            
+            <!--<avalonDock:DockingManager.Theme>
+                <avalonDock:Vs2013LightTheme/>
+            </avalonDock:DockingManager.Theme>-->
+
+            <!--<avalonDock:DockingManager.LayoutUpdateStrategy>
+                <pane:LayoutInitializer />
+            </avalonDock:DockingManager.LayoutUpdateStrategy>-->
+
+            <!--<avalonDock:DockingManager.DocumentHeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Title}" />
+                    </StackPanel>
+                </DataTemplate>
+            </avalonDock:DockingManager.DocumentHeaderTemplate>-->
+
+            <!--<avalonDock:DockingManager.AnchorableHeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="HHHH" />
+                    </StackPanel>
+                </DataTemplate>
+            </avalonDock:DockingManager.AnchorableHeaderTemplate>-->
+
+            <!--<avalonDock:DockingManager.LayoutItemContainerStyle>
+                --><!-- you can add additional bindings from the layoutitem to the DockWindowViewModel --><!--
+                <Style TargetType="{x:Type avalonDock:LayoutItem}">
+                <Setter Property="Title" Value="{Binding Model.Title}" />
+                <Setter Property="CloseCommand" Value="{Binding Model.CloseCommand}" />
+                <Setter Property="CanClose" Value="{Binding Model.CanClose}" />
+                </Style>
+            </avalonDock:DockingManager.LayoutItemContainerStyle>-->
+
+            <!--<avalonDock:DockingManager.Resources>
+                <Style TargetType="avalonDock:AnchorablePaneTitle">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+            </avalonDock:DockingManager.Resources>-->
+
+            <avalonDock:LayoutRoot x:Name="_layoutRoot">
+
+                <avalonDock:LayoutPanel Orientation="Horizontal">
+                    <avalonDock:LayoutAnchorablePaneGroup DockWidth="175" Orientation="Vertical">
+                        <avalonDock:LayoutAnchorablePane>
+                            <avalonDock:LayoutAnchorable ContentId="songs" Title="Lieder" CanHide="True" CanClose="False" AutoHideWidth="250">
+                                <DockPanel>
+                                    <ToolBarTray DockPanel.Dock="Top">
+                                        <ToolBar>
+                                            <ToolBar.Style>
+                                                <Style TargetType="ToolBar">
+                                                    <Setter Property="ToolBarTray.IsLocked" Value="True"/>
+                                                    <!-- Not Overflow Button -->
+                                                    <Setter Property="OverflowMode" Value="Never"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type ToolBar}">
+                                                                <ToolBarPanel IsItemsHost="True"/>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </ToolBar.Style>
+                                            <Button x:Name="AddSong" ToolTip="Lied hinzufügen">
+                                                <iconPacks:PackIconMaterial Kind="PlusCircleOutline"/>
+                                            </Button>
+                                            <Button x:Name="DeleteSong" ToolTip="Lied löschen">
+                                                <iconPacks:PackIconMaterial Kind="MinusCircleOutline" />
+                                            </Button>
+                                            <Button x:Name="EditSong" ToolTip="Lied bearbeiten">
+                                                <iconPacks:PackIconMaterial Kind="CircleEditOutline" />
+                                            </Button>
+                                        </ToolBar>
+                                    </ToolBarTray>
+                                    <xctk:AutoSelectTextBox DockPanel.Dock="Top" Text="Suche ..." AutoSelectBehavior="OnFocus" x:Name="SerchSong"/>
+                                    <ListBox DockPanel.Dock="Top" x:Name="SongList">
+                                        <ListBoxItem>All creation</ListBoxItem>
+                                        <ListBoxItem>All that I need</ListBoxItem>
+                                        <ListBoxItem>All who are thirsty</ListBoxItem>
+                                    </ListBox>
+                                </DockPanel>
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
+                        <avalonDock:LayoutAnchorablePane>
+                            <avalonDock:LayoutAnchorable ContentId="designs" Title="Designs" CanHide="True" CanClose="False" AutoHideWidth="250">
+                                <DockPanel>
+                                    <ToolBarTray DockPanel.Dock="Top">
+                                        <ToolBar>
+                                            <ToolBar.Style>
+                                                <Style TargetType="ToolBar">
+                                                    <Setter Property="ToolBarTray.IsLocked" Value="True"/>
+                                                    <!-- Not Overflow Button -->
+                                                    <Setter Property="OverflowMode" Value="Never"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type ToolBar}">
+                                                                <ToolBarPanel IsItemsHost="True"/>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </ToolBar.Style>
+                                            <Button x:Name="AddDesign" ToolTip="Design hinzufügen">
+                                                <iconPacks:PackIconMaterial Kind="PlusCircleOutline" />
+                                            </Button>
+                                            <Button x:Name="DeleteDesign" ToolTip="Design hinzufügen">
+                                                <iconPacks:PackIconMaterial Kind="MinusCircleOutline" />
+                                            </Button>
+                                            <Button x:Name="EditDesign" ToolTip="Design hinzufügen">
+                                                <iconPacks:PackIconMaterial Kind="CircleEditOutline" />
+                                            </Button>
+                                        </ToolBar>
+                                    </ToolBarTray>
+                                    <xctk:AutoSelectTextBox DockPanel.Dock="Top" Text="Suche ..." AutoSelectBehavior="OnFocus" x:Name="SearchDesign"/>
+                                    <ListBox DockPanel.Dock="Top" x:Name="DesignList">
+                                        <ListBoxItem>A</ListBoxItem>
+                                        <ListBoxItem>B</ListBoxItem>
+                                        <ListBoxItem>C</ListBoxItem>
+                                    </ListBox>
+                                </DockPanel>                                
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
+                    </avalonDock:LayoutAnchorablePaneGroup>                    
+                    
+                    <avalonDock:LayoutPanel>
+                        <avalonDock:LayoutDocumentPaneGroup>
+                            <avalonDock:LayoutDocumentPane>
+                                <avalonDock:LayoutDocument ContentId="preView" Title="Vorschau" CanFloat="False" CanClose="False">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Button Content="Vorschau!" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="preView"/>
+                                        <!--<wpf:ChromiumWebBrowser Grid.Row="1" x:Name="preViewBrowser"/>-->
+                                    </Grid>
+                                </avalonDock:LayoutDocument>
+                            </avalonDock:LayoutDocumentPane>
+                            <avalonDock:LayoutDocumentPane>
+                                <avalonDock:LayoutDocument ContentId="liveView" Title="Live" CanFloat="False" CanClose="False">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Button Content="Live!" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="liveView"/>
+                                        <wpf:ChromiumWebBrowser Grid.Row="1" x:Name="liveViewBrowser"/>
+                                    </Grid>                                    
+                                </avalonDock:LayoutDocument>
+                            </avalonDock:LayoutDocumentPane>
+                        </avalonDock:LayoutDocumentPaneGroup>
+                    </avalonDock:LayoutPanel>
+
+                    <avalonDock:LayoutAnchorablePaneGroup DockWidth="175" Orientation="Vertical">
+                        <avalonDock:LayoutAnchorablePane>
+                            <avalonDock:LayoutAnchorable ContentId="service" Title="Ablauf" CanClose="False" AutoHideWidth="250">
+                                <DockPanel>
+                                    <ToolBarTray DockPanel.Dock="Top">
+                                        <ToolBar>
+                                            <ToolBar.Style>
+                                                <Style TargetType="ToolBar">
+                                                    <Setter Property="ToolBarTray.IsLocked" Value="True"/>
+                                                    <!-- Not Overflow Button -->
+                                                    <Setter Property="OverflowMode" Value="Never"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type ToolBar}">
+                                                                <ToolBarPanel IsItemsHost="True"/>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </ToolBar.Style>
+                                            <Button x:Name="AddElement" ToolTip="Element hinzufügen">
+                                                <iconPacks:PackIconMaterial Kind="PlusCircleOutline" />
+                                            </Button>
+                                            <Button x:Name="DeleteElement" ToolTip="Element hinzufügen">
+                                                <iconPacks:PackIconMaterial Kind="MinusCircleOutline" />
+                                            </Button>
+                                            <Button x:Name="EditElement" ToolTip="Element hinzufügen">
+                                                <iconPacks:PackIconMaterial Kind="CircleEditOutline" />
+                                            </Button>
+                                        </ToolBar>
+                                    </ToolBarTray>
+                                    <ListBox DockPanel.Dock="Top" x:Name="ServiceList">
+                                    </ListBox>
+                                </DockPanel>
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
+                        <avalonDock:LayoutAnchorablePane>
+                            <avalonDock:LayoutAnchorable ContentId="projector" Title="Projektor" CanClose="False" AutoHideWidth="250">
+                                <DockPanel>
+                                    <ToolBarTray DockPanel.Dock="Top">
+                                        <ToolBar>
+                                            <ToolBar.Style>
+                                                <Style TargetType="ToolBar">
+                                                    <Setter Property="ToolBarTray.IsLocked" Value="True"/>
+                                                    <!-- Not Overflow Button -->
+                                                    <Setter Property="OverflowMode" Value="Never"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type ToolBar}">
+                                                                <ToolBarPanel IsItemsHost="True"/>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </ToolBar.Style>
+                                            <Button x:Name="AddProjector" ToolTip="Projektor hinzufügen">
+                                                <iconPacks:PackIconMaterial Kind="PlusCircleOutline" />
+                                            </Button>
+                                            <Button x:Name="DeleteProjector" ToolTip="Projektor hinzufügen">
+                                                <iconPacks:PackIconMaterial Kind="MinusCircleOutline" />
+                                            </Button>
+                                            <Button x:Name="EditProjector" ToolTip="Projektor hinzufügen">
+                                                <iconPacks:PackIconMaterial Kind="CircleEditOutline" />
+                                            </Button>
+                                        </ToolBar>
+                                    </ToolBarTray>
+                                    <ListBox DockPanel.Dock="Top" x:Name="ProjectorList">
+                                    </ListBox>
+                                </DockPanel>
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
+                    </avalonDock:LayoutAnchorablePaneGroup>
+                </avalonDock:LayoutPanel>
+
+                <!--<avalonDock:LayoutRoot.LeftSide>
+                    <avalonDock:LayoutAnchorSide>
+                        <avalonDock:LayoutAnchorGroup>
+                            <avalonDock:LayoutAnchorable Title="Menu" ContentId="Menu" CanClose="False" CanHide="False" />
+                        </avalonDock:LayoutAnchorGroup>
+                    </avalonDock:LayoutAnchorSide>
+                </avalonDock:LayoutRoot.LeftSide>-->
+
+            </avalonDock:LayoutRoot>
+        </avalonDock:DockingManager>
+    </Grid>
+</reactiveui:ReactiveWindow>
