@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Windows;
 
-namespace ProLyric
+namespace ProLyric.ViewModels
 {
     public class AppVM : ReactiveObject
     {

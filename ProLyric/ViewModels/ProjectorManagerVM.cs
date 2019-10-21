@@ -1,12 +1,12 @@
 ﻿using ReactiveUI;
 
-namespace ProLyric
+namespace ProLyric.ViewModels
 {
-	public class ServiceViewVM : ReactiveObject
+	public class ProjectorManagerVM : ReactiveObject
     {
 		// [Reactive] public string Address { get; set } = "lyrics://live/";
 
-		public ServiceViewVM()
+		public ProjectorManagerVM()
         {
 		}
     }

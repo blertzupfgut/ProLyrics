@@ -166,14 +166,33 @@
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\Songs.cs" />
-    <Compile Include="ViewModels\SongViewVM.cs" />
-    <Compile Include="ViewModels\DesignViewVM.cs" />
-    <Compile Include="ViewModels\ServiceViewVM.cs" />
-    <Compile Include="ViewModels\PreviewViewVM.cs" />
-    <Compile Include="ViewModels\LiveViewViewVM.cs" />
-    <Compile Include="ViewModels\ProjectorViewVM.cs" />
-    <Compile Include="ProjectorView.xaml.cs">
-      <DependentUpon>ProjectorView.xaml</DependentUpon>
+    <Compile Include="ViewModels\ProjectorManagerVM.cs" />
+    <Compile Include="ViewModels\SongManagerVM.cs" />
+    <Compile Include="ViewModels\DesignManagerVM.cs" />
+    <Compile Include="ViewModels\ServiceManagerVM.cs" />
+    <Compile Include="ViewModels\PreViewVM.cs" />
+    <Compile Include="ViewModels\LiveViewVM.cs" />
+    <Compile Include="ViewModels\ProjectorWindowVM.cs" />
+    <Compile Include="Views\Preview.xaml.cs">
+      <DependentUpon>Preview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProjectorWindow.xaml.cs">
+      <DependentUpon>ProjectorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProjectorManager.xaml.cs">
+      <DependentUpon>ProjectorManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceManager.xaml.cs">
+      <DependentUpon>ServiceManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DesignManager.xaml.cs">
+      <DependentUpon>DesignManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LiveView.xaml.cs">
+      <DependentUpon>LiveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SongManager.xaml.cs">
+      <DependentUpon>SongManager.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -188,7 +207,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ProjectorView.xaml">
+    <Page Include="Views\Preview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProjectorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProjectorManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ServiceManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DesignManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LiveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SongManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -220,9 +263,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>

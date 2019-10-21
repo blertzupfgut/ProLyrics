@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProLyric.Models
 {
-	class Design
+	public class Design
 	{
 	}
 }

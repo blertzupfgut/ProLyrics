@@ -2,11 +2,11 @@
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
-namespace ProLyric
+namespace ProLyric.ViewModels
 {
-	public class ProjectorViewVM : ReactiveObject
+	public class ProjectorWindowVM : ReactiveObject
     {
-		[Reactive] public string Address { get; } = "lyrics://live/";
+		[Reactive] public string Address { get; set; } = "lyrics://live/";
 
 		[Reactive] public bool ShowDevTools { get; set; } = true;
 
@@ -17,7 +17,7 @@ namespace ProLyric
 
 		[Reactive] public WindowState State { get; set; } = WindowState.Normal;
 
-		public ProjectorViewVM()
+		public ProjectorWindowVM()
         {
 		}
     }
