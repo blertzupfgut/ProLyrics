@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProLyric.Models
+﻿namespace ProLyric.Models
 {
-	public class Designs
+	public static class Designs
 	{
+		public static Design Find(string id)
+		{
+			return null;
+		}
 	}
 }
